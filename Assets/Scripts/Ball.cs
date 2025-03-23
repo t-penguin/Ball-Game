@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private float size;
     [SerializeField] private int _maxBounces;
     [SerializeField] private int _bounces;
 
@@ -10,7 +9,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        transform.localScale *= size;
+        transform.localScale *= Random.Range(0.5f, 2f);
         float angle = Random.Range(0, 2 * Mathf.PI);
         float magnitude = Random.Range(12f, 20f);
         float x = Mathf.Cos(angle) * magnitude;
