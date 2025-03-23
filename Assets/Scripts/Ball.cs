@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private int _maxBounces;
     [SerializeField] private int _bounces;
+    private int _maxBounces;
 
     // Sets the ball's size and moves it in a random direction at a random speed
     void Start()
@@ -12,6 +12,9 @@ public class Ball : MonoBehaviour
         float scalar = Random.Range(0.5f, 2f);
         transform.localScale *= scalar;
         rb.mass *= scalar;
+
+        _maxBounces = Random.Range(20, 41);
+
         float angle = Random.Range(0, 2 * Mathf.PI);
         float magnitude = Random.Range(12f, 20f);
         float x = Mathf.Cos(angle) * magnitude;
