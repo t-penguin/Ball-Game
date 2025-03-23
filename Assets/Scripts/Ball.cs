@@ -9,7 +9,9 @@ public class Ball : MonoBehaviour
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        transform.localScale *= Random.Range(0.5f, 2f);
+        float scalar = Random.Range(0.5f, 2f);
+        transform.localScale *= scalar;
+        rb.mass *= scalar;
         float angle = Random.Range(0, 2 * Mathf.PI);
         float magnitude = Random.Range(12f, 20f);
         float x = Mathf.Cos(angle) * magnitude;
