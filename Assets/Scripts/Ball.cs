@@ -2,20 +2,28 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private float size;
+    [SerializeField] private int _maxBounces;
+    [SerializeField] private int _bounces;
+
+    // Sets the ball's size and moves it in a random direction at a random speed
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Vector3 position = transform.position;
-        position.x = 2;
-        transform.position = position;
-        transform.localScale *= 2;
-        rb.AddForce(new Vector2(5, 5));
+        transform.localScale *= size;
+        float angle = Random.Range(0, 2 * Mathf.PI);
+        float magnitude = Random.Range(12f, 20f);
+        float x = Mathf.Cos(angle) * magnitude;
+        float y = Mathf.Sin(angle) * magnitude;
+        rb.AddForce(new Vector2(x, y));
     }
 
-    // Update is called once per frame
-    void Update()
+    // Counts the number of bounces and destroys the ball after maxBounces
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        
+        _bounces++;
+
+        if (_bounces >= _maxBounces)
+            Destroy(gameObject);
     }
 }
