@@ -165,5 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7be200d30605e41a43c8d6eee9e454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxBounces: 20
+  _lifetime: 10
   _bounces: 0
+  _maxBounces: 20
